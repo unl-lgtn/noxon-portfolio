@@ -23,6 +23,7 @@ function App() {
             <Skills />
             <Contact />
           </main>
+          <Footer />
           <Toaster />
         </div>
       </BrowserRouter>
