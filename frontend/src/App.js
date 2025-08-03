@@ -10,7 +10,6 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import BackgroundAnimation from './components/BackgroundAnimation';
 import FloatingElements from './components/FloatingElements';
-import CustomCursor from './components/CustomCursor';
 import { Toaster } from './components/ui/toaster';
 
 function App() {
@@ -26,31 +25,12 @@ function App() {
       document.documentElement.classList.remove('dark');
       document.body.style.backgroundColor = 'hsl(var(--background))';
     }
-
-    // Only hide cursor and show custom cursor on desktop with mouse
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    const isDesktop = window.innerWidth > 768;
-    
-    if (isDesktop && !isTouchDevice) {
-      document.body.style.cursor = 'none';
-      document.body.setAttribute('data-custom-cursor', 'true');
-    }
   }, []);
-
-  // Check if we should show custom cursor
-  const shouldShowCustomCursor = () => {
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    const isDesktop = window.innerWidth > 768;
-    return isDesktop && !isTouchDevice;
-  };
 
   return (
     <div className="App">
       <BrowserRouter>
         <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden transition-colors duration-300">
-          {/* Custom Cursor (Desktop only, non-touch devices) */}
-          {shouldShowCustomCursor() && <CustomCursor />}
-          
           {/* Background Animations */}
           <BackgroundAnimation />
           <FloatingElements />
