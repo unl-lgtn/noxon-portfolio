@@ -10,8 +10,6 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #030712;
-    color: #f9fafb;
 }
 
 code {
@@ -19,38 +17,74 @@ code {
         monospace;
 }
 
-/* Custom CSS Variables for Dark Theme */
+/* Consistent Color System for Light and Dark Modes */
 @layer base {
   :root {
-        --background: 218 27% 4%;
-        --foreground: 210 40% 98%;
-        --card: 218 27% 4%;
-        --card-foreground: 210 40% 98%;
-        --popover: 218 27% 6%;
-        --popover-foreground: 210 40% 98%;
-        --primary: 217 91% 60%;
-        --primary-foreground: 222 84% 5%;
-        --secondary: 217 32% 17%;
-        --secondary-foreground: 210 40% 98%;
-        --muted: 217 32% 17%;
-        --muted-foreground: 215 20% 65%;
-        --accent: 217 32% 17%;
-        --accent-foreground: 210 40% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 210 40% 98%;
-        --border: 217 32% 17%;
-        --input: 217 32% 17%;
-        --ring: 217 91% 60%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
+        /* Light Mode Colors */
+        --background: 0 0% 100%;
+        --foreground: 240 10% 3.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 3.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 240 10% 3.9%;
+        --primary: 24 74% 58%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 240 4.8% 95.9%;
+        --secondary-foreground: 240 5.9% 10%;
+        --muted: 240 4.8% 95.9%;
+        --muted-foreground: 240 3.8% 46.1%;
+        --accent: 240 4.8% 95.9%;
+        --accent-foreground: 240 5.9% 10%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 5.9% 90%;
+        --input: 240 5.9% 90%;
+        --ring: 24 74% 58%;
         --radius: 0.75rem;
+        
+        /* Custom theme colors */
+        --surface: 240 4.8% 95.9%;
+        --surface-elevated: 0 0% 100%;
+        --text-primary: 240 10% 3.9%;
+        --text-secondary: 240 3.8% 46.1%;
+        --text-muted: 240 3.8% 60%;
+        --orange-primary: 24 74% 58%;
+        --orange-secondary: 20 90% 48%;
         
         /* Custom font families */
         --font-space-grotesk: 'Space Grotesk', sans-serif;
         --font-inter: 'Inter', sans-serif;
+    }
+  .dark {
+        /* Dark Mode Colors */
+        --background: 240 10% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 240 10% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 24 74% 58%;
+        --primary-foreground: 240 10% 3.9%;
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+        --accent: 240 3.7% 15.9%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 3.7% 15.9%;
+        --input: 240 3.7% 15.9%;
+        --ring: 24 74% 58%;
+        
+        /* Custom theme colors */
+        --surface: 240 3.7% 15.9%;
+        --surface-elevated: 240 5.9% 10%;
+        --text-primary: 0 0% 98%;
+        --text-secondary: 240 5% 64.9%;
+        --text-muted: 240 5% 50%;
+        --orange-primary: 24 74% 58%;
+        --orange-secondary: 20 90% 55%;
     }
 }
 
@@ -73,6 +107,47 @@ code {
   .font-inter {
     font-family: var(--font-inter);
   }
+  
+  /* Custom color utilities */
+  .bg-surface {
+    background-color: hsl(var(--surface));
+  }
+  
+  .bg-surface-elevated {
+    background-color: hsl(var(--surface-elevated));
+  }
+  
+  .text-primary {
+    color: hsl(var(--text-primary));
+  }
+  
+  .text-secondary {
+    color: hsl(var(--text-secondary));
+  }
+  
+  .text-muted {
+    color: hsl(var(--text-muted));
+  }
+  
+  .text-orange-primary {
+    color: hsl(var(--orange-primary));
+  }
+  
+  .text-orange-secondary {
+    color: hsl(var(--orange-secondary));
+  }
+  
+  .bg-orange-primary {
+    background-color: hsl(var(--orange-primary));
+  }
+  
+  .bg-orange-secondary {
+    background-color: hsl(var(--orange-secondary));
+  }
+  
+  .border-orange-primary {
+    border-color: hsl(var(--orange-primary));
+  }
 }
 
 /* Custom CSS for light/dark theme transitions */
@@ -91,24 +166,26 @@ code {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-900;
+  @apply bg-muted;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 dark:bg-gray-700 rounded-full;
+  @apply bg-muted-foreground rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500 dark:bg-gray-600;
+  @apply bg-primary;
 }
 
 /* Enhanced selection colors for both themes */
 ::selection {
-  @apply bg-orange-200 dark:bg-orange-600/30 text-gray-900 dark:text-white;
+  background-color: hsl(var(--orange-primary) / 0.3);
+  color: hsl(var(--text-primary));
 }
 
 ::-moz-selection {
-  @apply bg-orange-200 dark:bg-orange-600/30 text-gray-900 dark:text-white;
+  background-color: hsl(var(--orange-primary) / 0.3);
+  color: hsl(var(--text-primary));
 }
 
 /* Smooth scrolling */
