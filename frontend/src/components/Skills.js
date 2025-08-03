@@ -39,10 +39,10 @@ const Skills = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="font-space-grotesk text-4xl md:text-5xl font-bold mb-6">
-            Technical <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Expertise</span>
+          <h2 className="font-space-grotesk text-4xl md:text-5xl font-bold mb-6 text-primary">
+            Technical <span className="bg-gradient-to-r from-orange-primary to-orange-secondary bg-clip-text text-transparent">Expertise</span>
           </h2>
-          <p className="font-inter text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="font-inter text-xl text-secondary max-w-2xl mx-auto">
             A comprehensive toolkit for building modern, scalable applications
           </p>
         </div>
@@ -56,14 +56,14 @@ const Skills = () => {
               <div
                 key={category.category}
                 data-skill-id={category.category}
-                className="group bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-800 p-6 hover:border-gray-600 transition-all duration-500"
+                className="group bg-surface backdrop-blur-sm rounded-xl border border-border p-6 hover:border-orange-primary hover:bg-orange-primary/5 transition-all duration-500"
               >
                 {/* Category Header */}
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg flex items-center justify-center group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
-                    <IconComponent className="w-6 h-6 text-gray-300 group-hover:text-white" />
+                  <div className="w-12 h-12 bg-surface-elevated rounded-lg flex items-center justify-center group-hover:bg-orange-primary group-hover:text-primary-foreground transition-all duration-300 border border-border">
+                    <IconComponent className="w-6 h-6 text-secondary group-hover:text-primary-foreground" />
                   </div>
-                  <h3 className="font-space-grotesk text-xl font-bold capitalize">
+                  <h3 className="font-space-grotesk text-xl font-bold capitalize text-primary">
                     {category.category}
                   </h3>
                 </div>
@@ -73,18 +73,18 @@ const Skills = () => {
                   {category.skills.map((skill, index) => (
                     <div key={skill.name} className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <span className="font-inter text-gray-300 font-medium">
+                        <span className="font-inter text-secondary font-medium">
                           {skill.name}
                         </span>
-                        <span className="font-inter text-sm text-gray-500">
+                        <span className="font-inter text-sm text-muted">
                           {skill.level}%
                         </span>
                       </div>
                       
                       {/* Skill Progress Bar */}
-                      <div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
+                      <div className="w-full bg-surface-elevated rounded-full h-2 overflow-hidden border border-border">
                         <div
-                          className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 ease-out"
+                          className="h-full bg-gradient-to-r from-orange-primary to-orange-secondary rounded-full transition-all duration-1000 ease-out"
                           style={{
                             width: visibleSkills.has(category.category) ? `${skill.level}%` : '0%',
                             transitionDelay: `${index * 0.1}s`
@@ -96,8 +96,8 @@ const Skills = () => {
                 </div>
 
                 {/* Category Badge */}
-                <div className="mt-6 pt-4 border-t border-gray-800">
-                  <span className="inline-flex items-center px-3 py-1 bg-gray-800 text-gray-400 rounded-full text-xs font-inter">
+                <div className="mt-6 pt-4 border-t border-border">
+                  <span className="inline-flex items-center px-3 py-1 bg-surface-elevated text-muted rounded-full text-xs font-inter border border-border">
                     {category.skills.length} Skills
                   </span>
                 </div>
@@ -110,16 +110,16 @@ const Skills = () => {
         <div className="mt-16 text-center">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="space-y-2">
-              <div className="font-space-grotesk text-3xl font-bold text-blue-400">5+</div>
-              <div className="font-inter text-gray-400">Years Experience</div>
+              <div className="font-space-grotesk text-3xl font-bold text-orange-primary">5+</div>
+              <div className="font-inter text-secondary">Years Experience</div>
             </div>
             <div className="space-y-2">
-              <div className="font-space-grotesk text-3xl font-bold text-purple-400">50+</div>
-              <div className="font-inter text-gray-400">Projects Completed</div>
+              <div className="font-space-grotesk text-3xl font-bold text-orange-primary">50+</div>
+              <div className="font-inter text-secondary">Projects Completed</div>
             </div>
             <div className="space-y-2">
-              <div className="font-space-grotesk text-3xl font-bold text-green-400">20+</div>
-              <div className="font-inter text-gray-400">Technologies</div>
+              <div className="font-space-grotesk text-3xl font-bold text-orange-primary">20+</div>
+              <div className="font-inter text-secondary">Technologies</div>
             </div>
           </div>
         </div>

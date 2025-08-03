@@ -47,7 +47,10 @@ const BackgroundAnimation = () => {
         ctx.globalAlpha = this.opacity;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = '#3b82f6';
+        
+        // Use CSS variable for consistent theming
+        const isDark = document.documentElement.classList.contains('dark');
+        ctx.fillStyle = isDark ? 'hsl(24, 74%, 58%)' : 'hsl(24, 74%, 58%)';
         ctx.fill();
         ctx.restore();
       }
@@ -81,7 +84,10 @@ const BackgroundAnimation = () => {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = '#3b82f6';
+            
+            // Use CSS variable for consistent theming
+            const isDark = document.documentElement.classList.contains('dark');
+            ctx.strokeStyle = isDark ? 'hsl(24, 74%, 58%)' : 'hsl(24, 74%, 58%)';
             ctx.stroke();
             ctx.restore();
           }
