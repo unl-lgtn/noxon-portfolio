@@ -47,7 +47,6 @@ const Navigation = () => {
               href="#" 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="font-space-grotesk text-2xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent hover:from-orange-primary hover:to-orange-secondary transition-all duration-300"
-              data-cursor="Back to top"
             >
               Noxon
             </a>
@@ -65,7 +64,6 @@ const Navigation = () => {
                       ? 'text-orange-primary'
                       : 'text-secondary'
                   }`}
-                  data-cursor={`Go to ${item.name}`}
                 >
                   {item.name}
                   <span className={`absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-orange-primary to-orange-secondary transition-transform duration-200 ${
@@ -85,7 +83,6 @@ const Navigation = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted hover:text-orange-primary transition-colors duration-200"
-              data-cursor="GitHub"
             >
               <Github className="w-5 h-5" />
             </a>
@@ -94,14 +91,12 @@ const Navigation = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted hover:text-orange-primary transition-colors duration-200"
-              data-cursor="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <button
               onClick={() => scrollToSection('#contact')}
               className="text-muted hover:text-orange-primary transition-colors duration-200"
-              data-cursor="Contact me"
             >
               <Mail className="w-5 h-5" />
             </button>
