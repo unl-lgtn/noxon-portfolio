@@ -34,17 +34,17 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-      {/* Animated Background Blobs */}
+      {/* Enhanced Animated Background Blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <div 
           ref={blobRef}
-          className="absolute top-1/4 right-1/4 w-96 h-96 opacity-20"
+          className="absolute top-1/4 right-1/4 w-96 h-96 opacity-20 dark:opacity-30"
         >
           <svg viewBox="0 0 200 200" className="w-full h-full">
             <defs>
               <linearGradient id="blob-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#4f46e5" />
-                <stop offset="50%" stopColor="#7c3aed" />
+                <stop offset="0%" stopColor="#f97316" />
+                <stop offset="50%" stopColor="#ef4444" />
                 <stop offset="100%" stopColor="#ec4899" />
               </linearGradient>
             </defs>
@@ -56,11 +56,11 @@ const Hero = () => {
           </svg>
         </div>
         
-        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 opacity-15 animate-pulse delay-300">
+        <div className="absolute bottom-1/4 left-1/4 w-72 h-72 opacity-15 dark:opacity-25 animate-pulse delay-300">
           <svg viewBox="0 0 200 200" className="w-full h-full">
             <defs>
               <linearGradient id="blob-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#06b6d4" />
+                <stop offset="0%" stopColor="#10b981" />
                 <stop offset="50%" stopColor="#3b82f6" />
                 <stop offset="100%" stopColor="#8b5cf6" />
               </linearGradient>
@@ -78,18 +78,18 @@ const Hero = () => {
         <div className="space-y-8 animate-fadeInUp">
           <div className="space-y-4">
             <h1 className="font-space-grotesk text-6xl md:text-8xl font-bold tracking-tight">
-              <span className="bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-500 dark:from-white dark:via-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
                 Noxon
               </span>
             </h1>
-            <div className="w-24 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+            <div className="w-24 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 mx-auto"></div>
           </div>
           
-          <p className="font-inter text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+          <p className="font-inter text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
             Full-Stack Developer & Creative Technologist
           </p>
           
-          <p className="font-inter text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto">
+          <p className="font-inter text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
             Crafting seamless digital experiences with React, Next.js, and modern web technologies. 
             Specializing in automation, DevOps, and imaginative user interfaces.
           </p>
@@ -97,15 +97,15 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
             <button 
               onClick={scrollToProjects}
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg font-inter font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25"
+              className="group relative px-8 py-4 bg-gradient-to-r from-orange-600 to-red-600 rounded-lg font-inter font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25"
             >
               View My Work
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-700 to-red-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
             </button>
             
             <a 
               href="#contact"
-              className="px-8 py-4 border border-gray-600 rounded-lg font-inter font-semibold hover:border-white hover:bg-white/5 transition-all duration-300"
+              className="px-8 py-4 border border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-inter font-semibold hover:border-orange-500 hover:text-orange-500 dark:hover:border-orange-400 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-all duration-300"
             >
               Get In Touch
             </a>
@@ -115,7 +115,7 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ChevronDown className="w-6 h-6 text-gray-400" />
+        <ChevronDown className="w-6 h-6 text-gray-500 dark:text-gray-400" />
       </div>
     </section>
   );
