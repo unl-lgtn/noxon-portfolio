@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import useScrollSpy from '../hooks/useScrollSpy';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const activeSection = useScrollSpy(['about', 'projects', 'skills', 'contact']);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,10 +19,10 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'About', href: '#about', id: 'about' },
+    { name: 'Projects', href: '#projects', id: 'projects' },
+    { name: 'Skills', href: '#skills', id: 'skills' },
+    { name: 'Contact', href: '#contact', id: 'contact' }
   ];
 
   const scrollToSection = (href) => {
@@ -45,6 +47,7 @@ const Navigation = () => {
               href="#" 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="font-space-grotesk text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent hover:from-orange-500 hover:to-red-500 transition-all duration-300"
+              data-cursor="Back to top"
             >
               Noxon
             </a>
@@ -57,10 +60,17 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="font-inter text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 hover:transform hover:-translate-y-0.5 transition-all duration-200 px-3 py-2 text-sm font-medium relative group"
+                  className={`font-inter hover:text-orange-500 dark:hover:text-orange-400 hover:transform hover:-translate-y-0.5 transition-all duration-200 px-3 py-2 text-sm font-medium relative group ${
+                    activeSection === item.id
+                      ? 'text-orange-500 dark:text-orange-400'
+                      : 'text-gray-600 dark:text-gray-300'
+                  }`}
+                  data-cursor={`Go to ${item.name}`}
                 >
                   {item.name}
-                  <span className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-orange-400 to-red-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+                  <span className={`absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-orange-400 to-red-500 transition-transform duration-200 ${
+                    activeSection === item.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  }`}></span>
                 </button>
               ))}
             </div>
@@ -75,6 +85,7 @@ const Navigation = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200"
+              data-cursor="GitHub"
             >
               <Github className="w-5 h-5" />
             </a>
@@ -83,12 +94,14 @@ const Navigation = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200"
+              data-cursor="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <button
               onClick={() => scrollToSection('#contact')}
               className="text-gray-500 dark:text-gray-400 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200"
+              data-cursor="Contact me"
             >
               <Mail className="w-5 h-5" />
             </button>
@@ -114,7 +127,11 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="font-inter text-gray-600 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
+                  className={`font-inter hover:text-orange-500 dark:hover:text-orange-400 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200 ${
+                    activeSection === item.id
+                      ? 'text-orange-500 dark:text-orange-400'
+                      : 'text-gray-600 dark:text-gray-300'
+                  }`}
                 >
                   {item.name}
                 </button>
