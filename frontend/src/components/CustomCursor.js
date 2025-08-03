@@ -36,33 +36,60 @@ const CustomCursor = () => {
     };
 
     const handleMouseEnter = (e) => {
-      const target = e.target.closest('[data-cursor]');
-      if (target) {
-        setIsHovering(true);
-        setCursorText(target.dataset.cursor || '');
+      // Ensure we have a valid Element before calling closest
+      let target = e.target;
+      if (target && typeof target.closest === 'function') {
+        const cursorElement = target.closest('[data-cursor]');
+        if (cursorElement) {
+          setIsHovering(true);
+          setCursorText(cursorElement.dataset.cursor || '');
+        }
       }
     };
 
     const handleMouseLeave = (e) => {
-      const target = e.target.closest('[data-cursor]');
-      if (target) {
-        setIsHovering(false);
-        setCursorText('');
+      // Ensure we have a valid Element before calling closest
+      let target = e.target;
+      if (target && typeof target.closest === 'function') {
+        const cursorElement = target.closest('[data-cursor]');
+        if (cursorElement) {
+          setIsHovering(false);
+          setCursorText('');
+        }
       }
     };
 
-    document.addEventListener('mousemove', updateCursor);
+    const handleMouseMove = (e) => {
+      updateCursor(e);
+      
+      // Check for cursor data on mouse move as backup
+      let element = e.target;
+      if (element && typeof element.closest === 'function') {
+        const cursorElement = element.closest('[data-cursor]');
+        if (cursorElement && cursorElement.dataset.cursor) {
+          if (!isHovering) {
+            setIsHovering(true);
+            setCursorText(cursorElement.dataset.cursor);
+          }
+        } else if (isHovering) {
+          setIsHovering(false);
+          setCursorText('');
+        }
+      }
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseenter', handleMouseEnter, true);
     document.addEventListener('mouseleave', handleMouseLeave, true);
     
     updateTrail();
 
     return () => {
-      document.removeEventListener('mousemove', updateCursor);
+      document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseenter', handleMouseEnter, true);
       document.removeEventListener('mouseleave', handleMouseLeave, true);
     };
-  }, []);
+  }, [isHovering]);
 
   return (
     <>
