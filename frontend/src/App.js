@@ -27,18 +27,29 @@ function App() {
       document.body.style.backgroundColor = '#ffffff';
     }
 
-    // Hide default cursor on desktop
-    if (window.innerWidth > 768) {
+    // Only hide cursor and show custom cursor on desktop with mouse
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isDesktop = window.innerWidth > 768;
+    
+    if (isDesktop && !isTouchDevice) {
       document.body.style.cursor = 'none';
+      document.body.setAttribute('data-custom-cursor', 'true');
     }
   }, []);
+
+  // Check if we should show custom cursor
+  const shouldShowCustomCursor = () => {
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isDesktop = window.innerWidth > 768;
+    return isDesktop && !isTouchDevice;
+  };
 
   return (
     <div className="App">
       <BrowserRouter>
         <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white relative overflow-x-hidden transition-colors duration-300">
-          {/* Custom Cursor (Desktop only) */}
-          {window.innerWidth > 768 && <CustomCursor />}
+          {/* Custom Cursor (Desktop only, non-touch devices) */}
+          {shouldShowCustomCursor() && <CustomCursor />}
           
           {/* Background Animations */}
           <BackgroundAnimation />
