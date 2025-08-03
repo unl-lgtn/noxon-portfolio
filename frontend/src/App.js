@@ -21,10 +21,10 @@ function App() {
     
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
       document.documentElement.classList.add('dark');
-      document.body.style.backgroundColor = '#030712';
+      document.body.style.backgroundColor = 'hsl(var(--background))';
     } else {
       document.documentElement.classList.remove('dark');
-      document.body.style.backgroundColor = '#ffffff';
+      document.body.style.backgroundColor = 'hsl(var(--background))';
     }
 
     // Only hide cursor and show custom cursor on desktop with mouse
@@ -47,7 +47,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white relative overflow-x-hidden transition-colors duration-300">
+        <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden transition-colors duration-300">
           {/* Custom Cursor (Desktop only, non-touch devices) */}
           {shouldShowCustomCursor() && <CustomCursor />}
           
