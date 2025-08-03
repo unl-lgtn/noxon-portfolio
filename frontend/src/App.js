@@ -10,6 +10,7 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import BackgroundAnimation from './components/BackgroundAnimation';
 import FloatingElements from './components/FloatingElements';
+import CustomCursor from './components/CustomCursor';
 import { Toaster } from './components/ui/toaster';
 
 function App() {
@@ -25,12 +26,20 @@ function App() {
       document.documentElement.classList.remove('dark');
       document.body.style.backgroundColor = '#ffffff';
     }
+
+    // Hide default cursor on desktop
+    if (window.innerWidth > 768) {
+      document.body.style.cursor = 'none';
+    }
   }, []);
 
   return (
     <div className="App">
       <BrowserRouter>
         <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white relative overflow-x-hidden transition-colors duration-300">
+          {/* Custom Cursor (Desktop only) */}
+          {window.innerWidth > 768 && <CustomCursor />}
+          
           {/* Background Animations */}
           <BackgroundAnimation />
           <FloatingElements />
