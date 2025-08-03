@@ -68,7 +68,6 @@ const Projects = () => {
                   ? 'bg-gradient-to-r from-orange-primary to-orange-secondary text-primary-foreground shadow-lg'
                   : 'bg-surface text-secondary hover:bg-surface-elevated hover:text-primary'
               }`}
-              data-cursor={`Filter by ${option.label}`}
             >
               {option.label}
             </button>
@@ -83,7 +82,6 @@ const Projects = () => {
               onClick={() => openProjectModal(project)}
               className="group relative bg-surface-elevated backdrop-blur-sm rounded-xl border border-border overflow-hidden hover:border-orange-primary transition-all duration-500 hover:transform hover:scale-105 cursor-pointer shadow-lg hover:shadow-2xl hover:shadow-orange-primary/10"
               style={{ animationDelay: `${index * 0.1}s` }}
-              data-cursor="View details"
             >
               {/* Project Image/Preview */}
               <div className="relative h-48 bg-gradient-to-br from-surface to-muted overflow-hidden">
@@ -164,7 +162,6 @@ const Projects = () => {
         <div className="text-center mt-12">
           <button 
             className="px-8 py-4 border border-border rounded-lg font-inter font-semibold hover:border-orange-primary hover:text-orange-primary hover:bg-surface transition-all duration-300 text-secondary"
-            data-cursor="See more projects"
           >
             View All Projects
           </button>
